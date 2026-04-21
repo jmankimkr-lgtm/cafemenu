@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JEYD Cafe — 메뉴</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="header-sub">since 2020</p>
+      <h1>☕ JEYD Cafe</h1>
+      <p class="header-tagline">따뜻한 한 잔이 기다립니다</p>
+    </div>
+  </header>
+
+  <nav class="category-nav">
+    <button class="cat-btn active" data-cat="all">전체</button>
+    <button class="cat-btn" data-cat="coffee">커피</button>
+    <button class="cat-btn" data-cat="noncoffee">논커피</button>
+    <button class="cat-btn" data-cat="dessert">디저트</button>
+  </nav>
+
+  <main class="menu-grid" id="menuGrid"></main>
+
+  <footer>
+    <p>📍 서울시 어딘가 · 🕙 매일 09:00 – 21:00 · 📞 02-000-0000</p>
+  </footer>
+
+  <script>
+    const menus = [
+      {
+        name: "아메리카노",
+        cat: "coffee",
+        price: 4500,
+        desc: "진한 에스프레소와 깨끗한 물의 조화.\n쌉싸름한 맛 속에 은은한 고소함이 담겨 있습니다.",
+        img: "images/americano.jpg"
+      },
+      {
+        name: "카페 라떼",
+        cat: "coffee",
+        price: 5000,
+        desc: "스팀 밀크와 에스프레소의 부드러운 만남.\n매일 마셔도 질리지 않는 편안한 한 잔입니다.",
+        img: "images/latte.jpg"
+      },
+      {
+        name: "카푸치노",
+        cat: "coffee",
+        price: 5000,
+        desc: "탄탄한 우유 거품을 듬뿍 올린 이탈리안 클래식.\n진한 커피 향과 부드러운 거품이 어우러집니다.",
+        img: "images/cappuccino.jpg"
+      },
+      {
+        name: "바닐라 라떼",
+        cat: "coffee",
+        price: 5500,
+        desc: "바닐라 시럽을 더해 달콤하게 완성한 라떼.\n커피 입문자에게도 부담 없이 추천하는 메뉴입니다.",
+        img: "images/vanilla_latte.jpg"
+      },
+      {
+        name: "카라멜 마끼아또",
+        cat: "coffee",
+        price: 5800,
+        desc: "에스프레소 위에 황금빛 카라멜을 뿌린 음료.\n달콤함과 쌉싸름함의 균형이 매력적입니다.",
+        img: "images/caramel_macchiato.jpg"
+      },
+      {
+        name: "말차 라떼",
+        cat: "noncoffee",
+        price: 5500,
+        desc: "엄선된 말차 파우더와 스팀 밀크로 완성한 라떼.\n은은한 쓴맛과 고소한 우유 향이 조화롭습니다.",
+        img: "images/matcha_latte.jpg"
+      },
+      {
+        name: "초코 라떼",
+        cat: "noncoffee",
+        price: 5500,
+        desc: "벨기에 초콜릿을 따뜻한 우유에 녹여 만든 라떼.\n진한 초콜릿 향이 마음까지 따뜻하게 채웁니다.",
+        img: "images/choco_latte.jpg"
+      },
+      {
+        name: "유자 에이드",
+        cat: "noncoffee",
+        price: 6000,
+        desc: "국내산 유자청과 탄산수로 만든 청량한 에이드.\n새콤달콤한 향이 가득해 더운 날 제격입니다.",
+        img: "images/yuzu_ade.jpg"
+      },
+      {
+        name: "딸기 스무디",
+        cat: "noncoffee",
+        price: 6500,
+        desc: "신선한 딸기를 통째로 갈아 만든 생과일 스무디.\n딸기 본연의 새콤달콤한 맛을 그대로 즐깁니다.",
+        img: "images/strawberry_smoothie.jpg"
+      },
+      {
+        name: "티라미수",
+        cat: "dessert",
+        price: 7500,
+        desc: "마스카포네 크림을 층층이 쌓은 정통 티라미수.\n깊은 커피 풍미와 부드러운 크림이 어우러집니다.",
+        img: "images/tiramisu.jpg"
+      },
+      {
+        name: "치즈케이크",
+        cat: "dessert",
+        price: 7000,
+        desc: "크림치즈를 듬뿍 넣어 촉촉하게 구운 뉴욕 스타일.\n한 조각만으로도 진한 만족감을 드립니다.",
+        img: "images/cheesecake.jpg"
+      },
+      {
+        name: "크로플",
+        cat: "dessert",
+        price: 6000,
+        desc: "크루아상 반죽을 와플 팬에 눌러 구운 디저트.\n겉은 바삭하고 속은 버터 향 가득 촉촉합니다.",
+        img: "images/croffle.jpg"
+      }
+    ];
+
+    const grid = document.getElementById("menuGrid");
+    const buttons = document.querySelectorAll(".cat-btn");
+
+    function render(cat) {
+      const list = cat === "all" ? menus : menus.filter(m => m.cat === cat);
+      grid.innerHTML = list.map(m => `
+        <div class="card">
+          <div class="card-img">
+            <img src="${m.img}" alt="${m.name}" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">${m.name}</h3>
+            <p class="card-desc">${m.desc}</p>
+            <p class="card-price">${m.price.toLocaleString()}원</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        render(btn.dataset.cat);
+      });
+    });
+
+    render("all");
+  </script>
+
+</body>
+</html>

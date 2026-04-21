@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -L -o americano.jpg \"https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80\")",
+      "Bash(curl -L -o latte.jpg      \"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80\")",
+      "Bash(curl -L -o cappuccino.jpg \"https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80\")",
+      "Bash(curl -L -o vanilla_latte.jpg \"https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80\")",
+      "Bash(curl -L -o caramel_macchiato.jpg \"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80\")",
+      "Bash(curl -L -o matcha_latte.jpg \"https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=600&q=80\")",
+      "Bash(start *)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git -C \"D:/OneDrive - ㈜딥노이드/문서/10.AI_Works/cafemenu\" config user.name)",
+      "Bash(git -C \"D:/OneDrive - ㈜딥노이드/문서/10.AI_Works/cafemenu\" config user.email)",
+      "Bash(git config *)"
+    ]
+  }
+}
